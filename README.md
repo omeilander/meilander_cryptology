@@ -9,12 +9,12 @@ programs will be updated accordingly.
 
 To-do List:
 
-hah comments...
-Master name
+hah comments...   
+Master name   
 make the print statements pretty
 
-Kaski Test
-function or just Permutation??
-Keyed Column Transposition
-AffineHill??
+Kaski Test   
+function or just Permutation??   
+Keyed Column Transposition   
+AffineHill??   
 crack object
