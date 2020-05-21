@@ -14,7 +14,7 @@ Master name
 make the print statements pretty
 
 Kaski Test
-Function or just Permutation??
-Keyed Column Transposition 
+function or just Permutation??
+Keyed Column Transposition
 AffineHill??
 crack object
