@@ -21,7 +21,6 @@ class Vigenere (object):
             ch = chr((Snum[i] % 26) + 65)
             new += ch
         
-        print(new)
         return(new)
         
     def decode(slef, S):
@@ -33,7 +32,6 @@ class Vigenere (object):
             ch = chr((Snum[i] % 26) + 65)
             new += ch
         
-        print(new)
         return(new)
         
 def findL(S):

@@ -7,6 +7,7 @@ Created on Wed May 20 18:10:25 2020
 
 from Affine import Affine
 from Hill import Hill
+from Permutation import Permutation as Per
 from Vigenere import Vigenere as Vig
 
 from IOC import IOC
@@ -38,6 +39,18 @@ class Encrypt(object):
             print(cipherText)
             
         return(cipherText)
+
+    def encodePermutation(self, perm):
+        """ugh"""
+
+        encode = Per(perm)
+        cipherText = encode.encode(self.planeText)
+        
+        if (self.verbose == 1):
+            print(cipherText)
+            
+        return(cipherText)
+        
 
     def encodeViginere(self, key):
         """endodes using a key"""
@@ -98,6 +111,17 @@ class Decrypt(object):
             
         return(planeText)
 
+    def encodePermutation(self, perm):
+        """ugh"""
+
+        encode = Per(perm)
+        planeText = decode.decode(self.cipherText)
+        
+        if (self.verbose == 1):
+            print(planeText)
+            
+        return(planeText)
+    
     def decodeVigenere(self, key):
         """decode a viginere with known key"""
 
