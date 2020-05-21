@@ -15,39 +15,93 @@ class Affine(object):
         self.m = m
         self.n = n
         
-    def reset(self):
+    def _reset(self):
         self.new = ""
         self.lis = np.zeros(26)
         
-    def encode(self, S, numLetters = True):
-        self.reset()
+    def encode(self, planeText, numLetters = True):
+        self._reset()
         self.numLetters = numLetters 
-        #print(S)
     
-        for i in range(len(S)):
-            ch = S[i]
+        for i in range(len(planeText)):
+            ch = planeText[i]
             num = ord(ch) - 65
             self.lis[num] += 1
         
             num = (self.m * num + self.n) % 26
             ch = chr(num + 65)
             self.new += ch
-#        if (self.new[0] == 'H' and self.new[1] == "E" and self.new[2] == 'H'):
         print(self.new)
         print()
             
         if (numLetters == True):
-            self.numLet()
+            self._numLet()
         return (self.new)
     
-    def numLet(self):
+    def _numLet(self):
         for i in range(26):
             print (str(i) + ": " + str(int(self.lis[i])))
+
+
+
+
+            
+    def decode(self, cipherText):
+        """im going to try my best"""
+        
+        return(self._encodedc(cipherText, self._getInv(self.m), 26 - self.n))
+
+
+        
+    def _encodedc(self, cipherText, m, n):
+        self._reset()
+    
+        for i in range(len(cipherText)):
+            ch = cipherText[i]
+            num = ord(ch) - 65
+            self.lis[num] += 1
+        
+            num = (m * num + n) % 26
+            ch = chr(num + 65)
+            self.new += ch
+        print(self.new)
+        print()
+            
+        return (self.new)
+
+    def _getInv(self, d):
+        if (d == 1):
+            return(1)
+        elif (d == 3):
+            return(9)
+        elif (d == 5):
+            return(21)
+        elif (d == 7):
+            return(15)
+        elif (d == 9):
+            return(3)
+        elif (d == 11):
+            return(19)
+        elif (d == 15):
+            return(7)
+        elif (d == 17):
+            return(23)
+        elif (d == 19):
+            return(11)
+        elif (d == 21):
+            return(5)
+        elif (d == 23):
+            return(17)
+        elif (d == 25):
+            return(25)
+
+
+
+
             
     def encodefs(self, S, fs = True):
-        self.reset()
+        self._reset()
         self.fs = fs 
-        #print(S)
     
         for i in range(len(S)):
             ch = S[i]
@@ -57,14 +111,13 @@ class Affine(object):
             num = (self.m * num + self.n) % 26
             ch = chr(num + 65)
             self.new += ch
-#        if (self.new[0] == 'H' and self.new[1] == "E" and self.new[2] == 'H'):
         print(self.new)
         print()
             
         if (fs == True):
             self.frequencySum()
         return (self.new)
-            
+   
     def frequencySum(self):
         fqt = np.empty(26)
         f= np.array((.081, .015, .022, .043, .127, .022, .020, .061, .070, .002, .013, .040, .024, .067, .075, .019, .001, .060, .063, .094, .028, .010, .026, .002, .020, .001, .081, .015, .022, .043, .127, .022, .020, .061, .070, .002, .013, .040, .024, .067, .075, .019, .001, .060, .063, .094, .028, .010, .026, .002, .020, .001))

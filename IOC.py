@@ -19,7 +19,7 @@ class IOC (object):
             self.lis[num] += 1
             self.tot += 1
             
-    def printIOC(self):
+    def printTotNumOfLettters(self):
         tot = 0
         for i in range(26):
             tot += self.lis[i]

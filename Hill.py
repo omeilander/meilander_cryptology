@@ -43,7 +43,7 @@ class Hill(object):
         
         return newS
     
-    def encodedc(self, string, k1, k2, k3, k4):
+    def _encodedc(self, string, k1, k2, k3, k4):
         newS = ""
         if ((len(string) % 2) == 1):
             string += 'X'
@@ -66,7 +66,7 @@ class Hill(object):
         newk2 = (-self.k2 * self.inv) % 26
         newk3 = (-self.k3 * self.inv) % 26
         newk4 = (self.k1 * self.inv) % 26
-        return(self.encodedc(string, newk1, newk2, newk3, newk4))
+        return(self._encodedc(string, newk1, newk2, newk3, newk4))
         
     
     def _getInv(self, d):
