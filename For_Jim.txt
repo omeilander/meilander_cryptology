@@ -11,34 +11,34 @@ for everything!!
 
 
 Questions:
-What should we call this?
+What should we call this?   
 I don't really like what I call things... like I have the Encrypt class but
 then I have to call the definition "encodeHill" so like i feel like I'm
-mixing encrypt and encode... is this bad?
-Function cipher or just Permutation??
+mixing encrypt and encode... is this bad?   
+Function cipher or just Permutation??      
+Hill for more than just a block of 2?   
 AffineHill??   
 
 
 
 To-Do:   
 hah comments...     
-make the print statements pretty
+make the print statements pretty   
 
-Kaski Test  
-Kappa Test  
+Kaski Test   
+Kappa Test   
 Keyed Column Transposition   
-Hill for more than just a block of 2?
-crack object!!!!!
+crack object!!!!!   
 
 
 
-Log?:
+Log?:   
 
-5/22/20:
+5/22/20:   
 I'm just going to add everything I've done up until this point. I have
 Mathematics of Secrets but not the other book yet. I've been reading to
 catch up to where we were in class and I'm making it. I can see how strongly
 influenced your class was by this book. On the programming side of things, I
 have the master program that can be easily imported and used as a sort of
 repository. So far, I have Affine, Hill, Perm, and Vig in the Master program
-with working examples of them being used to encrypt and decrypt. 
+with working examples of them being used to encrypt and decrypt.   
