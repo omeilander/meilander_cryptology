@@ -1,16 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Feb  6 14:51:49 2020
-
-@author: omeil
+This program is an example of how to use the Master program 
+to encrypt and decrypt using an Affine Cipher.
 """
-import numpy as np
-from Affine import Affine as A
+from Master import Encrypt
+from Master import Decrypt
 
-S = "ZOZMJERSJPKRVTAUXAZOZMJVVQGZSJUWZDATLUWFTNSOPSDHZJQJSYPYWFQBMG"
-m = 0
-n = 0
+S = "SECRETMESSAGETHISISVERYIMPORTANTDONOTTELLANYONEWHATTHISSAYS"
+m = 3
+n = 7
 
-aff = A(m ,n)
-#aff.numLet(S)
-aff.encode(S, True)
+enc = Encrypt(S, verbose = 1)
+
+enc.encodeAffine(m, n)
+
+#============================================================================
+
+S2 = "JTNGTMRTJJHZTMCFJFJSTGBFRAXGMHUMQXUXMMTOOHUBXUTVCHMMCFJJHBJ"
+
+dec = Decrypt(S2, verbose = 1)
+
+dec.decodeAffine(m, n)

@@ -5,20 +5,25 @@ Created on Tue Feb 18 17:27:44 2020
 @author: omeil
 """
 
-from Hill import Hill
+from Master import Encrypt
+from Master import Decrypt
 
-s = "BLUEFROGS"
-#encode = "SPDSXDWWZENWSFIOMVEL"
+S = "SECRETMESSAGETHISISVERYIMPORTANTDONOTTELLANYONEWHATTHISSAYS"
 
-k1 = 2
-k2 = 5
-k3 = 7
-k4 = 1
+k1 = 5
+k2 = 9
+k3 = 3
+k4 = 6
 
-hill = Hill(k1, k2, k3, k4)
+enc = Encrypt(S, verbose = 1)
 
-encode = hill.encode(s)
-print(encode)
+enc.encodeHill(k1, k2, k3, k4)
 
-decode = hill.decode(encode)
-print(decode)
+#============================================================================
+
+S2 = "WAHEJWSISGCKJWDRGYTYRKKQNWPORFCXLPJTGPPADHVBFQKOJVGPDRSGIOLK"
+
+dec = Decrypt(S2, verbose = 1)
+
+dec.decodeHill(k1, k2, k3, k4)
+

@@ -19,7 +19,7 @@ class Affine(object):
         self.new = ""
         self.lis = np.zeros(26)
         
-    def encode(self, planeText, numLetters = True):
+    def encode(self, planeText, numLetters = 0):
         self._reset()
         self.numLetters = numLetters 
     
@@ -31,10 +31,8 @@ class Affine(object):
             num = (self.m * num + self.n) % 26
             ch = chr(num + 65)
             self.new += ch
-        print(self.new)
-        print()
             
-        if (numLetters == True):
+        if (numLetters == 1):
             self._numLet()
         return (self.new)
     
@@ -42,32 +40,29 @@ class Affine(object):
         for i in range(26):
             print (str(i) + ": " + str(int(self.lis[i])))
 
-
-
-
             
     def decode(self, cipherText):
         """im going to try my best"""
         
-        return(self._encodedc(cipherText, self._getInv(self.m), 26 - self.n))
-
-
-        
-    def _encodedc(self, cipherText, m, n):
         self._reset()
-    
+        m_inv = self._getInv(self.m)
+        n_inv = 26 - self.n
+        
         for i in range(len(cipherText)):
             ch = cipherText[i]
             num = ord(ch) - 65
             self.lis[num] += 1
         
-            num = (m * num + n) % 26
+            num = (m_inv * (num + n_inv)) % 26
             ch = chr(num + 65)
             self.new += ch
-        print(self.new)
-        print()
             
         return (self.new)
+
+
+
+#=============================================================================
+    """utility definitions"""
 
     def _getInv(self, d):
         if (d == 1):
@@ -97,7 +92,9 @@ class Affine(object):
 
 
 
-
+#=============================================================================
+    """im not sure why I wrote this. I'm hoping it will be useful at
+    some point but at this point just ignore it :)""" 
             
     def encodefs(self, S, fs = True):
         self._reset()

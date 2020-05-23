@@ -52,7 +52,7 @@ class Encrypt(object):
         return(cipherText)
         
 
-    def encodeViginere(self, key):
+    def encodeVigenere(self, key):
         """endodes using a key"""
 
         encode = Vig(key)
@@ -111,10 +111,10 @@ class Decrypt(object):
             
         return(planeText)
 
-    def encodePermutation(self, perm):
+    def decodePermutation(self, perm):
         """ugh"""
 
-        encode = Per(perm)
+        decode = Per(perm)
         planeText = decode.decode(self.cipherText)
         
         if (self.verbose == 1):
