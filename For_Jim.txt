@@ -35,10 +35,10 @@ crack object!!!!!
 Log?:
 
 5/22/20:
-i'm just going to add a lot here. I have Mathematics of Secrets but not
-the other book yet. I've been reading to catch up to where we were in
-class and I'm making it. I can see how strongly influenced your class was
-by this book. On the programming side of things, I have the master program
-that can be easily imported and used as a sort of repository. So far, I
-have Affine, Hill, Perm, and Vig in the Master program with working
-examples of them being used to encrypt and decrypt. 
+I'm just going to add everything I've done up until this point. I have
+Mathematics of Secrets but not the other book yet. I've been reading to
+catch up to where we were in class and I'm making it. I can see how strongly
+influenced your class was by this book. On the programming side of things, I
+have the master program that can be easily imported and used as a sort of
+repository. So far, I have Affine, Hill, Perm, and Vig in the Master program
+with working examples of them being used to encrypt and decrypt. 
