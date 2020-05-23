@@ -11,16 +11,3 @@ anyy of these ciphers. At this time, they are NOT functional with the Master
 program.
 
 
-To-do List:
-
-hah comments...   
-Master name   
-make the print statements pretty
-
-Kaski Test  
-Kappa Test  
-function or just Permutation??   
-Keyed Column Transposition   
-AffineHill??
-Hill for more than just a block of 2?
-crack object

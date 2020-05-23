@@ -1,0 +1,44 @@
+Hi Jim.
+
+This is the beginnings of my project. I plan to keep this updated so you
+can check in at anytime you want. I will keep a log of my progress so you
+can see what I'm doing and where I'm at. I'm also going to leave a place
+for me to ask rhetorical questions and voice concerns and a place you keep
+comments on things you think are good/need to change and maybe a. Other
+than that, I plan to keep a to-do list and maybe other lists. Thanks again
+for everything!!
+
+
+
+Questions:
+What should we call this?
+I don't really like what I call things... like I have the Encrypt class but
+then I have to call the definition "encodeHill" so like i feel like I'm
+mixing encrypt and encode... is this bad?
+Function cipher or just Permutation??
+AffineHill??   
+
+
+
+To-Do:   
+hah comments...     
+make the print statements pretty
+
+Kaski Test  
+Kappa Test  
+Keyed Column Transposition   
+Hill for more than just a block of 2?
+crack object!!!!!
+
+
+
+Log?:
+
+5/22/20:
+i'm just going to add a lot here. I have Mathematics of Secrets but not
+the other book yet. I've been reading to catch up to where we were in
+class and I'm making it. I can see how strongly influenced your class was
+by this book. On the programming side of things, I have the master program
+that can be easily imported and used as a sort of repository. So far, I
+have Affine, Hill, Perm, and Vig in the Master program with working
+examples of them being used to encrypt and decrypt. 
