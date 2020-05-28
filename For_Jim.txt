@@ -46,3 +46,8 @@ influenced your class was by this book. On the programming side of things, I
 have the master program that can be easily imported and used as a sort of
 repository. So far, I have Affine, Hill, Perm, and Vig in the Master program
 with working examples of them being used to encrypt and decrypt.   
+
+
+5/27/20:
+massive work on a GUI. Also, the second book has arrived. Working on reading
+but coding has taken priority.
