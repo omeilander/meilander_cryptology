@@ -51,3 +51,11 @@ with working examples of them being used to encrypt and decrypt.
 5/27/20:
 massive work on a GUI. Also, the second book has arrived. Working on reading
 but coding has taken priority.
+
+5/28/20:
+Almost caught up in both books to new information. I finished the basics of the
+GUI for the systems I currently have. I have also messed around with converting
+the python program to an executable and it works, but I cannot upload it to git
+because it is too big of a file. If you want the .exe just let me know!
+
+Note for myself: "pyinstaller --onefile -w GUI.py"
