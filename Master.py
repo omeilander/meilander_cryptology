@@ -6,6 +6,7 @@ Created on Wed May 20 18:10:25 2020
 """
 
 from Affine import Affine
+from Autokey import Autokey
 from Hill import Hill
 from Permutation import Permutation as Per
 from Vigenere import Vigenere as Vig
@@ -28,6 +29,19 @@ class Encrypt(object):
         if (self.verbose == 1):
             print(cipherText)
             
+        return(cipherText)
+
+
+    def encodeAutokey(self, key):
+        """
+        """
+
+        encode = Autokey(key)
+        cipherText = encode.encode(self.planeText)
+
+        if (self.verbose == 1):
+            print(cipherText)
+
         return(cipherText)
         
         
@@ -99,6 +113,19 @@ class Decrypt(object):
         if (self.verbose == 1):
             print(planeText)
             
+        return(planeText)
+
+
+    def decodeAutokey(self, key):
+        """
+        """
+
+        decode = Autokey(key)
+        planeText = decode.decode(self.cipherText)
+
+        if (self.verbose == 1):
+            print(planeText)
+
         return(planeText)
 
         
