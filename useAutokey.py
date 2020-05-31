@@ -8,8 +8,6 @@ Created on Fri May 29 21:09:16 2020
 from Master import Encrypt
 from Master import Decrypt
 
-from Autokey import Autokey
-
 S = "SECRETMESSAGETHISISVERYIMPORTANTDONOTTELLANYONEWHATTHISSAYS"
 key = "EXPO"
 
