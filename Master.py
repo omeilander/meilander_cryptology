@@ -17,7 +17,7 @@ from ProductSum import ProductSum
 
 class Encrypt(object):
     def __init__(self, planeText, verbose = 0):
-        self.planeText = planeText
+        self.planeText = planeText.upper().replace(" ", "")
         self.verbose = verbose
 
     def encodeAffine(self, m, n):
@@ -37,6 +37,7 @@ class Encrypt(object):
         """
         """
 
+        key = key.upper().replace(" ", "")
         encode = Autokey(key)
         cipherText = encode.encode(self.planeText)
 
@@ -59,6 +60,7 @@ class Encrypt(object):
     def encodeKCT(self, keyword):
         """ """
 
+        keyword = keyword.upper().replace(" ", "")
         encode = KCT(keyword)
         cipherText= encode.encode(self.planeText)
         
@@ -83,6 +85,7 @@ class Encrypt(object):
     def encodeVigenere(self, key):
         """endodes using a key"""
 
+        key = key.upper().replace(" ", "")
         encode = Vig(key)
         cipherText = encode.encode(self.planeText)
         
@@ -114,7 +117,7 @@ class Encrypt(object):
     
 class Decrypt(object):
     def __init__(self, cipherText, verbose = 0):
-        self.cipherText = cipherText
+        self.cipherText = cipherText.upper().replace(" ", "")
         self.verbose = verbose
 
     def decodeAffine(self, m, n):
@@ -134,6 +137,7 @@ class Decrypt(object):
         """
         """
 
+        key = key.upper().replace(" ", "")
         decode = Autokey(key)
         planeText = decode.decode(self.cipherText)
 
@@ -156,6 +160,7 @@ class Decrypt(object):
     def decodeKCT(self, keyword):
         """ """
 
+        keyword = keyword.upper().replace(" ", "")
         decode = KCT(keyword)
         planeText = decode.decode(self.cipherText)
         
@@ -179,6 +184,7 @@ class Decrypt(object):
     def decodeVigenere(self, key):
         """decode a viginere with known key"""
 
+        key = key.upper().replace(" ", "")
         decode = Vig(key)
         planeText = decode.decode(self.cipherText)
         

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat May 30 19:27:20 2020
+Created on Sat May 30 22:26:41 2020
 
 @author: omeil
 """
 
-import numpy
+string = "fjslks lskdjfn eokjhs lej  "
+string.replace(" ", "")
 
+print(string)
