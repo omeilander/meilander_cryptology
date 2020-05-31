@@ -27,6 +27,10 @@ Comment
 """
 
 def AffineEncode(S, m, n):
+    if (int(m) == 13):
+        response  = messagebox.showwarning("Uh Oh!", "Sigh... I'm sorry m cannot be 13... I know I just said odd but it was too long to put in the box so here's your warning.")
+        return
+    
     m = int(m)
     n = int(n)
     enc = Encrypt(S)
@@ -57,6 +61,10 @@ def AutoEncode(S, key):
 
 
 def HillEncode(S, k1, k2, k3, k4):
+    if (int(k1) * int(k4) == int(k2) * int(k3)):
+        response  = messagebox.showwarning("Uh Oh!", "k1 * k4 cannot equal k2 * k3")
+        return
+    
     k1 = int(k1)
     k2 = int(k2)
     k3 = int(k3)
@@ -128,6 +136,10 @@ Comment
 """
 
 def AffineDecode(S, m, n):
+    if (int(m) == 13):
+        response  = messagebox.showwarning("Uh Oh!", "Sigh... I'm sorry m cannot be 13... I know I just said odd but it was too long to put in the box so here's your warning.")
+        return
+    
     m = int(m)
     n = int(n)
     dec = Decrypt(S)
@@ -158,6 +170,10 @@ def AutoDecode(S, key):
 
 
 def HillDecode(S, k1, k2, k3, k4):
+    if (int(k1) * int(k4) == int(k2) * int(k3)):
+        response  = messagebox.showwarning("Uh Oh!", "k1 * k4 cannot equal k2 * k3")
+        return
+    
     k1 = int(k1)
     k2 = int(k2)
     k3 = int(k3)
@@ -237,10 +253,12 @@ def aff_en(planetext):
     
     m = Entry(aff_en, width = 10)
     m.grid(row = 1, column = 1)
+    m.insert(0, "1-25 odd")
     ml = Label(aff_en, text = "m").grid(row = 2, column = 1)
 
     n = Entry(aff_en, width = 10)
     n.grid(row = 1, column = 3)
+    n.insert(0, "1-26")
     nl = Label(aff_en, text = "n").grid(row = 2, column = 3)
 
     sub = Button(aff_en, text = "Submit", padx = 20 , pady = 10, command = lambda: AffineEncode(planetext, m.get(), n.get())).grid(row = 3, column = 2) 
@@ -258,7 +276,7 @@ def auto_en(planetext):
 
     sub = Button(auto_en, text = "Submit", padx = 20 , pady = 10, command = lambda: AutoEncode(planetext, key.get())).grid(row = 3, column = 2)
     
-def hill_en(planetext):
+def hill_en(planetext):    
     hill_en = Toplevel()
     hill_en.title('Hill Encryption')
 
@@ -268,18 +286,22 @@ def hill_en(planetext):
     k1 = Entry(hill_en, width = 10)
     k1.grid(row = 1, column = 1)
     k11 = Label(hill_en, text = "k1").grid(row = 2, column =  1)
+    k1.insert(0, "1-26")
     
     k2 = Entry(hill_en, width = 10)
     k2.grid(row = 1, column = 3)
     k21 = Label(hill_en, text = "k2").grid(row = 2, column =  3)
+    k2.insert(0, "1-26")
     
     k3 = Entry(hill_en, width = 10)
     k3.grid(row = 3, column = 1)
     k31 = Label(hill_en, text = "k3").grid(row = 4, column =  1)
+    k3.insert(0, "1-26")
     
     k4 = Entry(hill_en, width = 10)
     k4.grid(row = 3, column = 3)
     k41 = Label(hill_en, text = "k4").grid(row = 4, column =  3)
+    k4.insert(0, "1-26")
 
     sub = Button(hill_en, text = "Submit", padx = 20 , pady = 10, command = lambda: HillEncode(planetext, k1.get(), k2.get(), k3.get(), k4.get())).grid(row = 5, column = 2) 
 
@@ -316,8 +338,9 @@ def perm_en(planetext):
             drop = OptionMenu(perm_en, number[i], *options)
             drop.grid(row = 5, column = i, padx = 10 , pady = 10)
             bsl = Label(perm_en, text = num).grid(row = 6, column = i)
+        l2 = Label(perm_en, text = "(You should not repeat numbers unless you want to loose information)").grid(row = 7, column = 0, columnspan = int(bs), padx = 10 , pady = 10)
         b = Button(perm_en, text = "Submit", command = lambda: PermEncode(planetext, number))
-        b.grid(row = 7, column = 0 ,columnspan = bs_int, padx = 10 , pady = 10)
+        b.grid(row = 8, column = 0 ,columnspan = bs_int, padx = 10 , pady = 10)
     
     txt = "                    Enter Block Size                    "
     l = Label(perm_en, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
@@ -357,10 +380,12 @@ def aff_de(ciphertext):
     
     m = Entry(aff_de, width = 10)
     m.grid(row = 1, column = 1)
+    m.insert(0, "1-25 odd")
     ml = Label(aff_de, text = "m").grid(row = 2, column = 1)
 
     n = Entry(aff_de, width = 10)
     n.grid(row = 1, column = 3)
+    n.insert(0, "1-26")
     nl = Label(aff_de, text = "n").grid(row = 2, column = 3)
 
     sub = Button(aff_de, text = "Submit", padx = 20 , pady = 10, command = lambda: AffineDecode(ciphertext, m.get(), n.get())).grid(row = 3, column = 2) 
@@ -388,18 +413,22 @@ def hill_de(ciphertext):
     k1 = Entry(hill_de, width = 10)
     k1.grid(row = 1, column = 1)
     k11 = Label(hill_de, text = "k1").grid(row = 2, column =  1)
+    k1.insert(0, "1-26")
     
     k2 = Entry(hill_de, width = 10)
     k2.grid(row = 1, column = 3)
     k21 = Label(hill_de, text = "k2").grid(row = 2, column =  3)
+    k2.insert(0, "1-26")
     
     k3 = Entry(hill_de, width = 10)
     k3.grid(row = 3, column = 1)
     k31 = Label(hill_de, text = "k3").grid(row = 4, column =  1)
+    k3.insert(0, "1-26")
     
     k4 = Entry(hill_de, width = 10)
     k4.grid(row = 3, column = 3)
     k41 = Label(hill_de, text = "k4").grid(row = 4, column =  3)
+    k4.insert(0, "1-26")
 
     sub = Button(hill_de, text = "Submit", padx = 20 , pady = 10, command = lambda: HillDecode(ciphertext, k1.get(), k2.get(), k3.get(), k4.get())).grid(row = 5, column = 2) 
 
@@ -437,6 +466,7 @@ def perm_de(ciphertext):
             drop = OptionMenu(perm_de, number[i], *options)
             drop.grid(row = 5, column = i, padx = 10 , pady = 10)
             bsl = Label(perm_de, text = num).grid(row = 6, column = i)
+        l2 = Label(perm_en, text = "(You should not repeat numbers unless you want to loose information)").grid(row = 7, column = 0, columnspan = int(bs), padx = 10 , pady = 10)
         b = Button(perm_de, text = "Submit", command = lambda: PermDecode(ciphertext, number))
         b.grid(row = 7, column = 0 ,columnspan = bs_int, padx = 10 , pady = 10)
     
@@ -501,6 +531,7 @@ def but_en1():
     l = Label(en, text = txt).grid(row = 0, column = 0, columnspan = 7, padx = 10 , pady = 10)
     e = Entry(en, width = 70)
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
+    e.insert(0, "Enter planetext here")
 
     button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1)
     button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3)
@@ -526,6 +557,7 @@ def but_de1():
     l = Label(de, text = txt).grid(row = 0, column = 0, columnspan = 7, padx = 10 , pady = 10)
     e = Entry(de, width = 70)
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
+    e.insert(0, "Enter ciphertext here")
 
     button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1)
     button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3)
@@ -570,6 +602,7 @@ def but_en():
     l = Label(en, text = txt).grid(row = 0, column = 0, columnspan = 7, padx = 10 , pady = 10)
     e = Entry(en, width = 70)
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
+    e.insert(0, "Enter planetext here")
 
 
     button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1)
@@ -617,6 +650,7 @@ def but_de():
     l = Label(de, text = txt).grid(row = 0, column = 0, columnspan = 7, padx = 10 , pady = 10)
     e = Entry(de, width = 70)
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
+    e.insert(0, "Enter ciphertext here")
 
     button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1)
     button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3)
