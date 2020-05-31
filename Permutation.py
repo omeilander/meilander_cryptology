@@ -14,7 +14,7 @@ class Permutation(object):
         self.perm = numpy.array(perm)-1
         self.block = len(self.perm)
 
-    def encode(self, string):
+    def encode(self, string, _forKCT = 0):
         """"""
         length = len(string)
         new = ""
@@ -29,6 +29,7 @@ class Permutation(object):
             block = string[:self.block]
             string = string[self.block:]
             temp = []
+            newButNumbers = []
             for i in range(self.block):
                 temp.append(0)
                 
@@ -39,9 +40,9 @@ class Permutation(object):
                 new += temp[i]
 
             counter += 1
-                
 
         return(new)
+        
 
 
     def decode(self, string):

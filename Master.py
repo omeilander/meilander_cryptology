@@ -8,6 +8,7 @@ Created on Wed May 20 18:10:25 2020
 from Affine import Affine
 from Autokey import Autokey
 from Hill import Hill
+from KCT import KCT
 from Permutation import Permutation as Per
 from Vigenere import Vigenere as Vig
 
@@ -53,6 +54,19 @@ class Encrypt(object):
             print(cipherText)
             
         return(cipherText)
+
+
+    def encodeKCT(self, keyword):
+        """ """
+
+        encode = KCT(keyword)
+        cipherText= encode.encode(self.planeText)
+        
+        if (self.verbose == 1):
+            print(cipherText)
+            
+        return(cipherText)
+    
 
     def encodePermutation(self, perm):
         """ugh"""
@@ -138,6 +152,19 @@ class Decrypt(object):
             
         return(planeText)
 
+
+    def decodeKCT(self, keyword):
+        """ """
+
+        decode = KCT(keyword)
+        planeText = decode.decode(self.cipherText)
+        
+        if (self.verbose == 1):
+            print(planeText)
+            
+        return(planeText)
+
+    
     def decodePermutation(self, perm):
         """ugh"""
 

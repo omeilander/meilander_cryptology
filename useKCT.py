@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 29 21:09:16 2020
+Created on Wed May 30 21:21:21 2020
 
 @author: omeil
 """
@@ -8,31 +8,20 @@ Created on Fri May 29 21:09:16 2020
 from Master import Encrypt
 from Master import Decrypt
 
-from Autokey import Autokey
 
 S = "SECRETMESSAGETHISISVERYIMPORTANTDONOTTELLANYONEWHATTHISSAYS"
-key = "EXPO"
+keyword = "MENTAL"
 
-enc = Autokey(key)
-
-print(enc.encode(S))
-
-
-
-
-
-
-
-"""
 enc = Encrypt(S, verbose = 1)
 
-enc.encodeVigenere(key)
+enc.encodeKCT(keyword)
 
 #============================================================================
 
-S2 = "WBRFIQBSWPPUIQWWWFHJIONWQMDFXXCHHLCCXQTZPXCMSKTKLXIHLFHGEVH"
+S2 = "EASYTNLEHSEETVPTTYASTGIIAOAWIXSMESMNTNHSCSHEODEOTARSIRROLNTY"
 
 dec = Decrypt(S2, verbose = 1)
 
-dec.decodeVigenere(key)
-"""
+dec.decodeKCT(keyword)
+
+
