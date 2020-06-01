@@ -14,12 +14,7 @@ Comments:
 
 
 
-Questions:
-What should we call this?   
-I don't really like what I call things... like I have the Encrypt class but
-then I have to call the definition "encodeHill" so like i feel like I'm
-mixing encrypt and encode... is this bad?   
-Function cipher or just Permutation??      
+Questions:    
 Hill for more than just a block of 2?   
 AffineHill??   
 
@@ -49,7 +44,7 @@ with working examples of them being used to encrypt and decrypt.
 
 
 5/27/20:
-massive work on a GUI. Also, the second book has arrived. Working on reading
+Massive work on a GUI. Also, the second book has arrived. Working on reading
 but coding has taken priority.
 
 5/28/20:
@@ -59,3 +54,8 @@ the python program to an executable and it works, but I cannot upload it to git
 because it is too big of a file. If you want the .exe just let me know!
 
 Note for myself: "pyinstaller --onefile -w GUI.py"
+
+5/30/20:
+Autokey and KCT have been added to my list of ciphers. I have caught up with 
+reading so on monday I will start on new information.
+

@@ -12,7 +12,7 @@ Master.py will be the main object imported and used in progams. As I get it to
 work, the use programs will be updated accordingly.
 
 A GUI is also in the process of being created. At this point, it is usable with
-the Affine, Hill, Permutation, and Vigenere ciphers. This will continue to be
+the Affine, Autokey, Keyed Columner Trasposition, Hill, Permutation, and Vigenere ciphers. This will continue to be
 updated as time goes on.
 
 Note: At this time any "use...All.py" programs are meant to be able to brute 
