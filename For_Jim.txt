@@ -29,7 +29,7 @@ To-Do:
 hah comments...     
 make the print statements pretty   
 
-Kaski Test   
+Kasiski Test   
 Kappa Test   
 Keyed Column Transposition   
 crack object!!!!!   

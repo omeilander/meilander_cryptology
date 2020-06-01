@@ -4,6 +4,7 @@ Created on Wed May 20 18:10:25 2020
 
 @author: omeil
 """
+import numpy
 
 from Affine import Affine
 from Autokey import Autokey
@@ -13,6 +14,8 @@ from Permutation import Permutation as Per
 from Vigenere import Vigenere as Vig
 
 from IOC import IOC
+from KappaTest import Kappa
+from LetterFreq import LetterFreq
 from ProductSum import ProductSum
 
 class Encrypt(object):
@@ -226,3 +229,61 @@ def calcIOC(string, verbose = 0):
         print(ioc)
             
     return(ioc)
+
+
+#===========================================================
+
+
+class Tests(object):
+    def __init__(self, String, verbose = 1):
+        self.S = String.upper().replace(" ", "")
+        self.verbose = verbose
+
+
+    def calcIOC():
+        """this calulates the IOC from the passed string"""
+        self._calcIOC(self.S)
+
+
+    def calcKappa(self, numTests = 25):
+        """ """
+
+        test = Kappa(self.S)
+        num = test.calcKappa(num_tested = numTests)
+
+        if (self.verbose == 1):
+            prt_num = numpy.arange(0, numTests + 1, 1)
+
+            print("Kappa Test:")
+            for i in range(numTests + 1):
+                prcnt = num [i] / len(self.S)
+                print("{:2.0f}: {:3.0f}      {:.3f}".format(prt_num[i], num[i], prcnt))
+            
+        return(num)
+
+
+    def calcLetterFreq(self):
+        """ """
+
+        test = LetterFreq(self.S)
+        lis = test.calcLF()
+
+        if (self.verbose == 1):
+            letters = numpy.arange(0, 26, 1)
+            print("Letter Frequency Table")
+            for i in range(len(lis)):
+                print("{:2.0f}({}):  {:3.0f}".format(letters[i], chr(letters[i] + 65), lis[i]))
+
+        return(lis)
+    
+
+    def _calcIOC(self, string):
+        """this calulates the IOC from a passed string"""
+        
+        ob = IOC(string)
+        ioc = ob.calcIOC
+
+        if (self.verbose == 1):
+            print(ioc)
+            
+        return(ioc)
