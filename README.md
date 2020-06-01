@@ -12,8 +12,8 @@ Master.py will be the main object imported and used in progams. As I get it to
 work, the use programs will be updated accordingly.
 
 A GUI is also in the process of being created. At this point, it is usable with
-the Affine, Autokey, Keyed Columner Trasposition, Hill, Permutation, and Vigenere ciphers. This will continue to be
-updated as time goes on.
+the Affine, Autokey, Keyed Columner Trasposition, Hill, Permutation, and Vigenere 
+ciphers. It can also find IOC, Letter Frequency, and perform a kappa test. This 
 
 Note: At this time any "use...All.py" programs are meant to be able to brute 
 force any of these ciphers. At this time, they are NOT functional with the 
