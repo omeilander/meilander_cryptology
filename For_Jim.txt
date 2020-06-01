@@ -47,6 +47,7 @@ with working examples of them being used to encrypt and decrypt.
 Massive work on a GUI. Also, the second book has arrived. Working on reading
 but coding has taken priority.
 
+
 5/28/20:
 Almost caught up in both books to new information. I finished the basics of the
 GUI for the systems I currently have. I have also messed around with converting
@@ -55,7 +56,13 @@ because it is too big of a file. If you want the .exe just let me know!
 
 Note for myself: "pyinstaller --onefile -w GUI.py"
 
+
 5/30/20:
 Autokey and KCT have been added to my list of ciphers. I have caught up with 
 reading so on monday I will start on new information.
+
+
+5/31/20:
+Add Kappa test and Letter Frequency test. Because of these, I added a test object
+in the Master program. Finally, I added these tests plus IOC to the GUI.
 
