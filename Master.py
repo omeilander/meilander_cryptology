@@ -240,9 +240,10 @@ class Tests(object):
         self.verbose = verbose
 
 
-    def calcIOC():
+    def calcIOC(self):
         """this calulates the IOC from the passed string"""
-        self._calcIOC(self.S)
+        ioc = self._calcIOC(self.S)
+        return ioc
 
 
     def calcKappa(self, numTests = 25):
@@ -281,7 +282,7 @@ class Tests(object):
         """this calulates the IOC from a passed string"""
         
         ob = IOC(string)
-        ioc = ob.calcIOC
+        ioc = ob.calcIOC()
 
         if (self.verbose == 1):
             print(ioc)

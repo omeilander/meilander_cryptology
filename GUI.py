@@ -7,6 +7,7 @@ Created on Thu Feb 27 19:28:45 2020
 
 from Master import Encrypt
 from Master import Decrypt
+from Master import Tests
 from tkinter import *
 from tkinter import messagebox
 
@@ -18,8 +19,32 @@ init = 0
 
 def Close():
     print("oops... I havent gotten here yet...")
+
+
+#=======================================================================================================
+
+"""
+Comment
+"""
+
+def IOC(S):
+    tst = Tests(S, verbose = 0)
+
+    ioc = tst.calcIOC()
+
+    out = Toplevel()
+    out.title('IOC Result')
+    txt = "The Index of Coincidence is:"
+    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e = Entry(out, width = 25)
+    e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e.insert(0, ioc)
+
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2) 
+
     
 
+    
 #=======================================================================================================
 
 """
@@ -510,6 +535,12 @@ def de_destroy():
     init = 0
     de.destroy()
 
+def te_destroy():
+    global te
+    global init
+    init = 0
+    te.destroy()
+
     
 #======================================================================================================
 
@@ -533,15 +564,15 @@ def but_en1():
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
     e.insert(0, "Enter planetext here")
 
-    button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1)
-    button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3)
-    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 2, column = 5, padx = 10)
-    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 1)
-    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 3)
-    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 3, column = 5)
+    button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
+    button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
+    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
     
-    button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 4, column = 2)
-    button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 4, column = 4)
+    button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 4, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 4, column = 4, padx = 10 , pady = 10)
     en.mainloop()
 
 
@@ -559,15 +590,15 @@ def but_de1():
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
     e.insert(0, "Enter ciphertext here")
 
-    button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1)
-    button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3)
-    button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 2, column = 5, padx = 10)
-    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 1)
-    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 3)
-    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 3, column = 5)
+    button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
+    button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
+    button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
     
-    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 4, column = 2)
-    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 4, column = 4)
+    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 4, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 4, column = 4, padx = 10 , pady = 10)
     de.mainloop()
 
 
@@ -575,6 +606,7 @@ def but_en():
     global init
     global en
     global de
+    global te
     global e
 
     if init == 1:
@@ -593,6 +625,16 @@ def but_en():
             de.destroy()
         elif response == 0:
             return
+        
+            
+        
+    elif init == 3:
+        response  = messagebox.askyesno("Uh Oh!", "You already have a window open! Close previous window?")
+
+        if response == 1:
+            te.destroy()
+        elif response == 0:
+            return
     
     init = 1
 
@@ -605,15 +647,15 @@ def but_en():
     e.insert(0, "Enter planetext here")
 
 
-    button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1)
-    button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3)
-    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 2, column = 5, padx = 10)
-    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 1)
-    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 3)
-    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 3, column = 5)
+    button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
+    button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
+    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
     
-    button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 5, column = 2)
-    button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 5, column = 4)
+    button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 5, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 5, column = 4, padx = 10 , pady = 10)
     
     en.mainloop()
 
@@ -622,6 +664,7 @@ def but_de():
     global init
     global de
     global en
+    global te
     
         
     if init == 1:
@@ -641,6 +684,15 @@ def but_de():
         elif response == 0:
             return
         
+            
+        
+    elif init == 3:
+        response  = messagebox.askyesno("Uh Oh!", "You already have a window open! Close previous window?")
+
+        if response == 1:
+            te.destroy()
+        elif response == 0:
+            return
 
     init = 2
     
@@ -652,18 +704,69 @@ def but_de():
     e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
     e.insert(0, "Enter ciphertext here")
 
-    button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1)
-    button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3)
+    button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
+    button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
     button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 2, column = 5, padx = 10)
-    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 1)
-    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 3)
-    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 3, column = 5)
+    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
     
     
-    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 4, column = 2)
-    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 4, column = 4)
+    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 4, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 4, column = 4, padx = 10 , pady = 10)
     de.mainloop()
 
+
+def but_te():
+    global init
+    global de
+    global en
+    global te
+    
+        
+    if init == 1:
+        response  = messagebox.askyesno("Uh Oh!", "You already have a window open! Close previous window?")
+
+        if response == 1:
+            en.destroy()
+        elif response == 0:
+            return
+            
+        
+    elif init == 2:
+        response  = messagebox.askyesno("Uh Oh!", "You already have a window open! Close previous window?")
+
+        if response == 1:
+            de.destroy()
+        elif response == 0:
+            return
+        
+            
+        
+    elif init == 3:
+        response  = messagebox.askyesno("Uh Oh!", "You already have a window open! Close previous window?")
+
+        if response == 1:
+            te.destroy()
+        elif response == 0:
+            return
+
+    init = 3
+    
+    txt = "Enter your string select test"
+    te = Toplevel()
+    te.title('Tests')
+    l = Label(te, text = txt).grid(row = 0, column = 0, columnspan = 7, padx = 10 , pady = 10)
+    e = Entry(te, width = 70)
+    e.grid(row = 1, column = 0, columnspan = 7, padx = 20, pady = 10)
+    e.insert(0, "Enter string here")
+
+    button_IOC = Button(te, text = "Index of Coincidence", padx = 20 , pady = 10, command = lambda: IOC(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
+    button_Kappa = Button(te, text = "Kappa Test", padx = 20 , pady = 10, command = lambda: Kappa(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
+    button_LF = Button(te, text = "Letter Frequency", padx = 20 , pady = 10, command = lambda: LF(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+
+    button_exit = Button(te, text = "Go Back", padx = 20 , pady = 10, command = te_destroy).grid(row = 4, column = 3, padx = 10 , pady = 10)
+    
     
 #======================================================================================================
 
@@ -674,9 +777,10 @@ def but_de():
 intro = "Welcome to Bosley! Please click a button below to start or 'Exit' to exit."
     
 l = Label(root, text = intro).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
-button_en = Button(root, text = "Open Encrypter", padx = 20 , pady = 10, command = but_en).grid(row = 1, column = 1)
-button_de = Button(root, text = "Open Decrypter", padx = 20 , pady = 10, command = but_de).grid(row = 1, column = 3)
-button_exit = Button(root, text = "Exit", padx = 20 , pady = 10, command = root.quit).grid(row = 2, column = 2)
+button_en = Button(root, text = "Open Encrypter", padx = 20 , pady = 10, command = but_en).grid(row = 1, column = 1, pady = 10)
+button_de = Button(root, text = "Open Decrypter", padx = 20 , pady = 10, command = but_de).grid(row = 1, column = 3, pady = 10)
+button_te = Button(root, text = "Open Tests", padx = 20 , pady = 10, command = but_te).grid(row = 2, column = 2, pady = 10)
+button_exit = Button(root, text = "Exit", padx = 20 , pady = 10, command = root.quit).grid(row = 3, column = 2, pady = 10)
 
 
 root.mainloop()
