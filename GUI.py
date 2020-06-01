@@ -10,6 +10,7 @@ from Master import Decrypt
 from Master import Tests
 from tkinter import *
 from tkinter import messagebox
+import numpy
 
 root = Tk()
 root.title('Bosley Encryption')
@@ -35,13 +36,28 @@ def IOC(S):
     out = Toplevel()
     out.title('IOC Result')
     txt = "The Index of Coincidence is:"
-    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 30 , pady = 10)
     e = Entry(out, width = 25)
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, ioc)
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2) 
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10) 
 
+def LF(S):
+    tst = Tests(S, verbose = 0)
+    letters = numpy.arange(0, 26, 1)
+
+    lis = tst.calcLetterFreq()
+
+    out = Toplevel()
+    out.title('Letter Frequency Result')
+    txt = "The Letter Frequency is as follows:"
+    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 30 , pady = 10)
+
+    for i in range(26):
+        Label(out, text = "{:2.0f}({}):  {:3.0f}".format(letters[i], chr(letters[i] + 65), lis[i])).grid(row = i + 1, column = 0, columnspan = 5, padx = 10 )
+
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 27, column = 2, padx = 10 , pady = 10) 
     
 
     
@@ -68,7 +84,7 @@ def AffineEncode(S, m, n):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, enc.encodeAffine(m, n))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2) 
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10) 
     
 
 def AutoEncode(S, key):
@@ -82,7 +98,7 @@ def AutoEncode(S, key):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, enc.encodeAutokey(key))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
 
 
 def HillEncode(S, k1, k2, k3, k4):
@@ -104,7 +120,7 @@ def HillEncode(S, k1, k2, k3, k4):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, enc.encodeHill(k1, k2, k3, k4))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 def KCTEncode(S, key):
@@ -118,7 +134,7 @@ def KCTEncode(S, key):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, enc.encodeKCT(key))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 def PermEncode(S, func):
@@ -136,7 +152,7 @@ def PermEncode(S, func):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, enc.encodePermutation(perm))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 def VigEncode(S, key):
@@ -151,7 +167,7 @@ def VigEncode(S, key):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, enc.encodeVigenere(key))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 #======================================================================================================
@@ -177,7 +193,7 @@ def AffineDecode(S, m, n):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, dec.decodeAffine(m, n))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 def AutoDecode(S, key):
@@ -191,7 +207,7 @@ def AutoDecode(S, key):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, dec.decodeAutokey(key))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
 
 
 def HillDecode(S, k1, k2, k3, k4):
@@ -214,7 +230,7 @@ def HillDecode(S, k1, k2, k3, k4):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, dec.decodeHill(k1, k2, k3, k4))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 def KCTDecode(S, key):
@@ -228,7 +244,7 @@ def KCTDecode(S, key):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, dec.decodeKCT(key))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
 
 
 def PermDecode(S, func):
@@ -246,7 +262,7 @@ def PermDecode(S, func):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, dec.decodePermutation(perm))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
 
 def VigDecode(S, key):
 #    check
@@ -260,7 +276,7 @@ def VigDecode(S, key):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, dec.decodeVigenere(key))
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2)
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
     
 
 #=====================================================================================================
