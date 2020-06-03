@@ -41,7 +41,33 @@ def IOC(S):
     e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
     e.insert(0, ioc)
 
-    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10) 
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
+
+def Kappa(S):
+    tst = Tests(S, verbose = 0)
+
+    def subm(nt):
+        num = tst.calcKappa(numTests = int(nt))
+        prt_num = numpy.arange(0, int(nt) + 1, 1)
+
+        Label(out, text = "Kappa Test Result:").grid(row = 3, column = 0, columnspan = 5, padx = 30 , pady = 10)
+        for i in range(int(nt) + 1):
+            prcnt = num [i] / len(S)
+            Label(out, text = "{:2.0f}: {:3.0f}      {:.3f}".format(prt_num[i], num[i], prcnt)).grid(row = i + 4, column = 0, columnspan = 5, padx = 10 )
+
+        close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row =int(nt) + 5 , column = 2, padx = 10 , pady = 10)
+
+
+    out = Toplevel()
+    out.title('Kappa Result')
+    txt = "Please enter the number of tests you want."
+    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 30 , pady = 10)
+    e = Entry(out, width = 10)
+    e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e.insert(0, 25)
+
+    sub = Button(out, text = "Submit", padx = 20 , pady = 10, command = lambda: subm(e.get())).grid(row = 2, column = 2, padx = 10 , pady = 10)
+    
 
 def LF(S):
     tst = Tests(S, verbose = 0)
@@ -289,20 +315,24 @@ def aff_en(planetext):
     aff_en = Toplevel()
     aff_en.title('Affine Encryption')
     
-    txt = "Enter a value for m and n where m and n are for the multiplicative and shift ciphers respectivly"
+    txt = "Select a value for m and n where m and n are for the multiplicative and shift ciphers respectivly"
     l = Label(aff_en, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
     
-    m = Entry(aff_en, width = 10)
+    num_m = IntVar()
+    num_m.set(1)
+    n_m = numpy.array((1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25))
+    m = OptionMenu(aff_en, num_m, *n_m)
     m.grid(row = 1, column = 1)
-    m.insert(0, "1-25 odd")
-    ml = Label(aff_en, text = "m").grid(row = 2, column = 1)
+    Label(aff_en, text = "m").grid(row = 2, column = 1)
 
-    n = Entry(aff_en, width = 10)
+    num_n = IntVar()
+    num_n.set(1)
+    n_n = numpy.arange(1, 27, 1) 
+    n = OptionMenu(aff_en, num_n, *n_n)
     n.grid(row = 1, column = 3)
-    n.insert(0, "1-26")
-    nl = Label(aff_en, text = "n").grid(row = 2, column = 3)
+    Label(aff_en, text = "n").grid(row = 2, column = 3)
 
-    sub = Button(aff_en, text = "Submit", padx = 20 , pady = 10, command = lambda: AffineEncode(planetext, m.get(), n.get())).grid(row = 3, column = 2) 
+    sub = Button(aff_en, text = "Submit", padx = 20 , pady = 10, command = lambda: AffineEncode(planetext, num_m.get(), num_n.get())).grid(row = 3, column = 2) 
 
 def auto_en(planetext):
     auto_en = Toplevel()
@@ -323,28 +353,33 @@ def hill_en(planetext):
 
     txt = "Enter a k1, k2, k3, and k4 to encrypt using a Hill cipher"
     l = Label(hill_en, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
-
-    k1 = Entry(hill_en, width = 10)
+    
+    num_k1 = IntVar()
+    num_k1.set(1)
+    n_k1 = numpy.arange(1, 27, 1)
+    k1 = OptionMenu(hill_en, num_k1, *n_k1)
     k1.grid(row = 1, column = 1)
-    k11 = Label(hill_en, text = "k1").grid(row = 2, column =  1)
-    k1.insert(0, "1-26")
+    Label(hill_en, text = "k1").grid(row = 2, column = 1)
     
-    k2 = Entry(hill_en, width = 10)
+    num_k2 = IntVar()
+    num_k2.set(1)
+    k2 = OptionMenu(hill_en, num_k2, *n_k1)
     k2.grid(row = 1, column = 3)
-    k21 = Label(hill_en, text = "k2").grid(row = 2, column =  3)
-    k2.insert(0, "1-26")
+    Label(hill_en, text = "k2").grid(row = 2, column = 3)
     
-    k3 = Entry(hill_en, width = 10)
+    num_k3 = IntVar()
+    num_k3.set(1)
+    k3 = OptionMenu(hill_en, num_k3, *n_k1)
     k3.grid(row = 3, column = 1)
-    k31 = Label(hill_en, text = "k3").grid(row = 4, column =  1)
-    k3.insert(0, "1-26")
+    Label(hill_en, text = "k3").grid(row = 4, column = 1)
     
-    k4 = Entry(hill_en, width = 10)
+    num_k4 = IntVar()
+    num_k4.set(1)
+    k4 = OptionMenu(hill_en, num_k4, *n_k1)
     k4.grid(row = 3, column = 3)
-    k41 = Label(hill_en, text = "k4").grid(row = 4, column =  3)
-    k4.insert(0, "1-26")
+    Label(hill_en, text = "k4").grid(row = 4, column = 3)
 
-    sub = Button(hill_en, text = "Submit", padx = 20 , pady = 10, command = lambda: HillEncode(planetext, k1.get(), k2.get(), k3.get(), k4.get())).grid(row = 5, column = 2) 
+    sub = Button(hill_en, text = "Submit", padx = 20 , pady = 10, command = lambda: HillEncode(planetext, num_k1.get(), num_k2.get(), num_k3.get(), num_k4.get())).grid(row = 5, column = 2) 
 
 def KCT_en(planetext):
     KCT_en = Toplevel()
@@ -416,20 +451,22 @@ def aff_de(ciphertext):
     aff_de = Toplevel()
     aff_de.title('Affine Decryption')
     
-    txt = "Enter a value for m and n where m and n are for the multiplicative and shift ciphers respectivly"
+    txt = "Select the value for m and n where m and n are for the multiplicative and shift ciphers respectivly that were used"
     l = Label(aff_de, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
     
-    m = Entry(aff_de, width = 10)
+    num_m = IntVar()
+    num_m.set(1)
+    n_m = numpy.array((1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25))
+    m = OptionMenu(aff_de, num_m, *n_m)
     m.grid(row = 1, column = 1)
-    m.insert(0, "1-25 odd")
-    ml = Label(aff_de, text = "m").grid(row = 2, column = 1)
 
-    n = Entry(aff_de, width = 10)
+    num_n = IntVar()
+    num_n.set(1)
+    n_n = numpy.arange(1, 27, 1) 
+    n = OptionMenu(aff_de, num_n, *n_n)
     n.grid(row = 1, column = 3)
-    n.insert(0, "1-26")
-    nl = Label(aff_de, text = "n").grid(row = 2, column = 3)
 
-    sub = Button(aff_de, text = "Submit", padx = 20 , pady = 10, command = lambda: AffineDecode(ciphertext, m.get(), n.get())).grid(row = 3, column = 2) 
+    sub = Button(aff_de, text = "Submit", padx = 20 , pady = 10, command = lambda: AffineDecode(ciphertext, num_m.get(), num_n.get())).grid(row = 3, column = 2) 
 
 def auto_de(ciphertext):
     auto_de = Toplevel()
