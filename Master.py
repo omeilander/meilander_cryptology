@@ -8,6 +8,7 @@ import numpy
 
 from Affine import Affine
 from Autokey import Autokey
+from GedeFu18 import GedeFu18
 from Hill import Hill
 from KCT import KCT
 from Permutation import Permutation as Per
@@ -42,6 +43,20 @@ class Encrypt(object):
 
         key = key.upper().replace(" ", "")
         encode = Autokey(key)
+        cipherText = encode.encode(self.planeText)
+
+        if (self.verbose == 1):
+            print(cipherText)
+
+        return(cipherText)
+
+
+    def encodeGedeFu18(self, key):
+        """
+        """
+
+        key = key.upper().replace(" ", "")
+        encode = GedeFu18(key)
         cipherText = encode.encode(self.planeText)
 
         if (self.verbose == 1):
@@ -149,6 +164,20 @@ class Decrypt(object):
 
         return(planeText)
 
+
+
+    def decodeGedeFu18(self, key):
+        """
+        """
+
+        key = key.upper().replace(" ", "")
+        decode = GedeFu18(key)
+        planeText = decode.decode(self.cipherText)
+
+        if (self.verbose == 1):
+            print(planeText)
+
+        return(planeText)
         
     def decodeHill(self, k1, k2, k3, k4):
         decode = Hill(k1, k2, k3, k4)

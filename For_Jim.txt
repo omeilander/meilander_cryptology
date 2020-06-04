@@ -24,10 +24,9 @@ To-Do:
 hah comments...     
 make the print statements pretty   
 
-Kasiski Test   
-Kappa Test   
-Keyed Column Transposition   
-crack object!!!!!   
+GedeFu 18 cipher (ADFGX cipher)
+Kasiski Test    
+crack object!!!!! (merged into "Tests" for now)   
 
 
 
@@ -66,3 +65,7 @@ reading so on monday I will start on new information.
 Add Kappa test and Letter Frequency test. Because of these, I added a test object
 in the Master program. Finally, I added these tests plus IOC to the GUI.
 
+
+6/1-2/20:
+Reading a lot about number theory and other stuffs. I'm working my way through.
+I have also done some general updates to make my code more intuitive.

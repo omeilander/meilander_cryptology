@@ -125,6 +125,20 @@ def AutoEncode(S, key):
     e.insert(0, enc.encodeAutokey(key))
 
     close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
+    
+
+def GedeEncode(S, key):
+    enc = Encrypt(S)
+
+    out = Toplevel()
+    out.title('Ciphertext')
+    txt = "The ciphertext is as follows:"
+    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e = Entry(out, width = 100)
+    e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e.insert(0, enc.encodeGedeFu18(key))
+
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
 
 
 def HillEncode(S, k1, k2, k3, k4):
@@ -234,6 +248,20 @@ def AutoDecode(S, key):
     e.insert(0, dec.decodeAutokey(key))
 
     close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
+    
+
+def GedeDecode(S, key):
+    dec = Decrypt(S)
+
+    out = Toplevel()
+    out.title('Ciphertext')
+    txt = "The plaintext is as follows:"
+    Label(out, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e = Entry(out, width = 100)
+    e.grid(row = 1, column = 0, columnspan = 5, padx = 10 , pady = 10)
+    e.insert(0, dec.decodeGedeFu18(key))
+
+    close = Button(out, text = "Close", padx = 20 , pady = 10, command = Close).grid(row = 2, column = 2, padx = 10 , pady = 10)
 
 
 def HillDecode(S, k1, k2, k3, k4):
@@ -336,7 +364,7 @@ def aff_en(planetext):
 
 def auto_en(planetext):
     auto_en = Toplevel()
-    auto_en.title("Autokey Encryption")
+    auto_en.title("GedeFu 18 Encryption")
 
     txt = "                    Enter a Keyword to encrypt with                    "
     l = Label(auto_en, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
@@ -345,7 +373,20 @@ def auto_en(planetext):
     key.grid(row = 1, column = 2)
     keyl = Label(auto_en, text = "Keyword").grid(row = 2, column = 2)
 
-    sub = Button(auto_en, text = "Submit", padx = 20 , pady = 10, command = lambda: AutoEncode(planetext, key.get())).grid(row = 3, column = 2)
+    sub = Button(auto_en, text = "Submit", padx = 20 , pady = 10, command = lambda: AutoEncode(planetext, key.get())).grid(row = 3, column = 2) 
+
+def gede_en(planetext):
+    gede_en = Toplevel()
+    gede_en.title("Autokey Encryption")
+
+    txt = "                    Enter a Keyword to encrypt with                    "
+    l = Label(gede_en, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
+
+    key = Entry(gede_en, width = 10)
+    key.grid(row = 1, column = 2)
+    keyl = Label(gede_en, text = "Keyword").grid(row = 2, column = 2)
+
+    sub = Button(gede_en, text = "Submit", padx = 20 , pady = 10, command = lambda: GedeEncode(planetext, key.get())).grid(row = 3, column = 2)
     
 def hill_en(planetext):    
     hill_en = Toplevel()
@@ -479,7 +520,20 @@ def auto_de(ciphertext):
     key.grid(row = 1, column = 2)
     keyl = Label(auto_de, text = "Keyword").grid(row = 2, column = 2)
 
-    sub = Button(auto_de, text = "Submit", padx = 20 , pady = 10, command = lambda: AutoDecode(ciphertext, key.get())).grid(row = 3, column = 2)
+    sub = Button(auto_de, text = "Submit", padx = 20 , pady = 10, command = lambda: AutoDecode(ciphertext, key.get())).grid(row = 3, column = 2) 
+
+def gede_de(ciphertext):
+    gede_de = Toplevel()
+    gede_de.title("GedeFu 18 Decryption")
+
+    txt = "                    Enter a Keyword to decrypt with                    "
+    l = Label(gede_de, text = txt).grid(row = 0, column = 0, columnspan = 5, padx = 10 , pady = 10)
+
+    key = Entry(gede_de, width = 10)
+    key.grid(row = 1, column = 2)
+    keyl = Label(gede_de, text = "Keyword").grid(row = 2, column = 2)
+
+    sub = Button(gede_de, text = "Submit", padx = 20 , pady = 10, command = lambda: GedeDecode(ciphertext, key.get())).grid(row = 3, column = 2)
     
 def hill_de(ciphertext):
     hill_de = Toplevel()
@@ -619,13 +673,14 @@ def but_en1():
 
     button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
     button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
-    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
-    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
-    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
-    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_gedefu = Button(en, text = "GedeFu 18", padx = 20 , pady = 10, command = lambda: gede_en(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 4, column = 1, padx = 10 , pady = 10)
     
-    button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 4, column = 2, padx = 10 , pady = 10)
-    button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 4, column = 4, padx = 10 , pady = 10)
+    button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 5, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 5, column = 4, padx = 10 , pady = 10)
     en.mainloop()
 
 
@@ -645,13 +700,14 @@ def but_de1():
 
     button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
     button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
-    button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
-    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
-    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
-    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_gedefu = Button(de, text = "GedeFu 18", padx = 20 , pady = 10, command = lambda: gede_de(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 4, column = 1, padx = 10 , pady = 10)
     
-    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 4, column = 2, padx = 10 , pady = 10)
-    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 4, column = 4, padx = 10 , pady = 10)
+    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 5, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 5, column = 4, padx = 10 , pady = 10)
     de.mainloop()
 
 
@@ -702,10 +758,11 @@ def but_en():
 
     button_affine = Button(en, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_en(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
     button_autokey = Button(en, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_en(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
-    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
-    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
-    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
-    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_gedefu = Button(en, text = "GedeFu 18", padx = 20 , pady = 10, command = lambda: gede_en(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_hill = Button(en, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_en(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
+    button_KCT = Button(en, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_en(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_perm = Button(en, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_en(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_vig = Button(en, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_en(e.get())).grid(row = 4, column = 1, padx = 10 , pady = 10)
     
     button_de = Button(en, text = "Switch to Decrypt", padx = 20 , pady = 10, command = but_de1).grid(row = 5, column = 2, padx = 10 , pady = 10)
     button_exit = Button(en, text = "Go Back", padx = 20 , pady = 10, command = en_destroy).grid(row = 5, column = 4, padx = 10 , pady = 10)
@@ -759,14 +816,15 @@ def but_de():
 
     button_affine = Button(de, text = "Affine", padx = 20 , pady = 10, command = lambda: aff_de(e.get())).grid(row = 2, column = 1, padx = 10 , pady = 10)
     button_autokey = Button(de, text = "Autokey", padx = 20 , pady = 10, command = lambda: auto_de(e.get())).grid(row = 2, column = 3, padx = 10 , pady = 10)
-    button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 2, column = 5, padx = 10)
-    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 1, padx = 10 , pady = 10)
-    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
-    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_gedefu = Button(de, text = "GedeFu 18", padx = 20 , pady = 10, command = lambda: gede_de(e.get())).grid(row = 2, column = 5, padx = 10 , pady = 10)
+    button_hill = Button(de, text = "Hill", padx = 20 , pady = 10, command = lambda: hill_de(e.get())).grid(row = 3, column = 1, padx = 10)
+    button_KCT = Button(de, text = "KCT", padx = 20 , pady = 10, command = lambda: KCT_de(e.get())).grid(row = 3, column = 3, padx = 10 , pady = 10)
+    button_perm = Button(de, text = "Permutation", padx = 20 , pady = 10, command = lambda: perm_de(e.get())).grid(row = 3, column = 5, padx = 10 , pady = 10)
+    button_vig = Button(de, text = "Vigenére", padx = 20 , pady = 10, command = lambda: vig_de(e.get())).grid(row = 4, column = 1, padx = 10 , pady = 10)
     
     
-    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 4, column = 2, padx = 10 , pady = 10)
-    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 4, column = 4, padx = 10 , pady = 10)
+    button_en = Button(de, text = "Switch to Encrypt", padx = 20 , pady = 10, command = but_en1).grid(row = 5, column = 2, padx = 10 , pady = 10)
+    button_exit = Button(de, text = "Go Back", padx = 20 , pady = 10, command = de_destroy).grid(row = 5, column = 4, padx = 10 , pady = 10)
     de.mainloop()
 
 
