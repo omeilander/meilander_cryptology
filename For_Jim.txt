@@ -69,3 +69,8 @@ in the Master program. Finally, I added these tests plus IOC to the GUI.
 6/1-2/20:
 Reading a lot about number theory and other stuffs. I'm working my way through.
 I have also done some general updates to make my code more intuitive.
+
+
+6/3/20:
+More reading. I have gotten into the DES and AES systems on ATM's. I added code
+for the Geheimschrift der Funker 1918 (GedeFu 18) cipher to Master and GUI.
