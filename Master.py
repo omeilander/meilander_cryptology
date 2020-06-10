@@ -9,9 +9,11 @@ import numpy
 from Affine import Affine
 from Autokey import Autokey
 from GedeFu18 import GedeFu18
+from Gromark import Gromark
 from Hill import Hill
 from KCT import KCT
 from Permutation import Permutation as Per
+from PohligHelmanExponentiation import PohHell
 from Vigenere import Vigenere as Vig
 
 from IOC import IOC
@@ -63,6 +65,19 @@ class Encrypt(object):
             print(cipherText)
 
         return(cipherText)
+
+
+    def encodeGromark(self, key):
+        """
+        """
+
+        encode = Gromark(key)
+        cipherText = encode.encode(self.planeText)
+
+        if (self.verbose == 1):
+            print(cipherText)
+
+        return(cipherText)
         
         
     def encodeHill(self, k1, k2, k3, k4):
@@ -92,6 +107,18 @@ class Encrypt(object):
         """ugh"""
 
         encode = Per(perm)
+        cipherText = encode.encode(self.planeText)
+        
+        if (self.verbose == 1):
+            print(cipherText)
+            
+        return(cipherText)
+    
+
+    def encodePohligHellman(self, e, mod = 2819):
+        """ugh"""
+
+        encode = PohHell(e, modulo = mod)
         cipherText = encode.encode(self.planeText)
         
         if (self.verbose == 1):
@@ -165,7 +192,6 @@ class Decrypt(object):
         return(planeText)
 
 
-
     def decodeGedeFu18(self, key):
         """
         """
@@ -178,7 +204,21 @@ class Decrypt(object):
             print(planeText)
 
         return(planeText)
-        
+
+
+    def decodeGromark(self, key):
+        """
+        """
+
+        decode = Gromark(key)
+        planeText = decode.decode(self.cipherText)
+
+        if (self.verbose == 1):
+            print(planeText)
+
+        return(planeText)
+
+    
     def decodeHill(self, k1, k2, k3, k4):
         decode = Hill(k1, k2, k3, k4)
         planeText = decode.decode(self.cipherText)
@@ -212,6 +252,19 @@ class Decrypt(object):
             print(planeText)
             
         return(planeText)
+
+    
+    def decodePohligHellman(self, e, mod = 2819):
+        """ugh"""
+
+        decode = PohHell(e, modulo = mod)
+        planeText = decode.decode(self.cipherText)
+        
+        if (self.verbose == 1):
+            print(planeText)
+            
+        return(planeText)
+
     
     def decodeVigenere(self, key):
         """decode a viginere with known key"""

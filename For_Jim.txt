@@ -74,3 +74,10 @@ I have also done some general updates to make my code more intuitive.
 6/3/20:
 More reading. I have gotten into the DES and AES systems on ATM's. I added code
 for the Geheimschrift der Funker 1918 (GedeFu 18) cipher to Master and GUI.
+
+
+6/6/20:
+More reading. I have gotten through all of the in depth Autokey ciphers where
+they can do all of the stuff. I'm thinking about adding one of these? That's a
+big maybe. I also added code for the Gromark cipher to Master and GUI. I'll
+probably send you an update email here soon.
