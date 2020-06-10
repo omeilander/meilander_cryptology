@@ -10,7 +10,21 @@ for everything!!
 
 
 
-Comments:
+Ciphers Coded:
+Affine
+Autokey (simple)
+GedeFu18
+Gromark
+Hill
+KCT
+Permutation
+Pohlig-Hellman Exponentiation
+Vigenere
+
+
+What page am I on?:
+Holden: 200
+Rubinstein-Salzedo: 99
 
 
 
@@ -24,7 +38,6 @@ To-Do:
 hah comments...     
 make the print statements pretty   
 
-GedeFu 18 cipher (ADFGX cipher)
 Kasiski Test    
 crack object!!!!! (merged into "Tests" for now)   
 
@@ -81,3 +94,13 @@ More reading. I have gotten through all of the in depth Autokey ciphers where
 they can do all of the stuff. I'm thinking about adding one of these? That's a
 big maybe. I also added code for the Gromark cipher to Master and GUI. I'll
 probably send you an update email here soon.
+
+
+6/9/20:
+More reading. I'm through all of the LFSR ciphers and Exponentiation ciphers. I 
+added the Pohlig-Hellman exponentiation cipher to everything. At this point I'm
+up to 9 ciphers that I have coded in and could combine them in many ways to make
+many of the mechanisms that they discuss. Maybe might try looking at making one 
+those for fun? Maybe at the end but for now I really just need to send you an
+email. Soon.
+
